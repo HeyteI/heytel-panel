@@ -1,5 +1,12 @@
+import { Roomsbox } from "../../components/roomsbox"
+
+
 const Rooms = () => {
-    return <h1>rooms</h1>;
-};
+    return (
+        <div>
+            <Roomsbox title="Piętro 1"></Roomsbox>
+        </div>
+    )
+}
 
 export default Rooms;
