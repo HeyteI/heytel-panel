@@ -19,8 +19,8 @@ export class Navbar extends Component {
                         </div>
                         <div class="flex-1 ml-2 justify-center sm:items-stretch sm:justify-start">
                             <div class="flex-shrink-0 flex items-center">
-                                <NavLink to="/">
-                                    <img class="h-8 w-auto mr-2" src="icons/logo.svg" alt="Heytel" />
+                                <NavLink to="/" className='bl' activeClassName="active">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="41" width="41" viewBox="0 0 32 32"><title>home 3</title><g stroke-width="1.5" fill="#9CA38F" stroke="#9CA38F" class="nc-icon-wrapper"><polyline data-cap="butt" data-color="color-2" points="1 14 16 2 31 14" fill="none" stroke-miterlimit="10"></polyline> <polyline data-cap="butt" points="13 30 13 22 19 22 19 30" fill="none" stroke="#9CA38F0" stroke-miterlimit="10"></polyline> <polyline points="5 16 5 30 27 30 27 16" fill="none" stroke="#9CA38F0" stroke-linecap="square" stroke-miterlimit="10"></polyline> <rect data-color="color-2" x="14" y="13" width="4" height="4" fill="none" stroke-linecap="square" stroke-miterlimit="10"></rect> <line data-cap="butt" data-color="color-2" x1="7" y1="9.2" x2="7" y2="4" fill="none" stroke-miterlimit="10"></line></g></svg>
                                     <span class="font-sans font-normal text-xl">Heytel</span>
                                 </NavLink>
                             </div>

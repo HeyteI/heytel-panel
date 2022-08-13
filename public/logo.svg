@@ -1,7 +1,7 @@
 <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23.9167 14.5209H17.0834V21.3542H23.9167V14.5209Z" stroke="#7B49EA" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
-<path d="M1.70837 17.9375L20.5 2.5625L39.2917 17.9375" stroke="#7B49EA" stroke-width="2" stroke-miterlimit="10"/>
-<path d="M16.2292 38.4375V28.1875H24.7709V38.4375" stroke="#7B49EA" stroke-width="2" stroke-miterlimit="10"/>
-<path d="M5.97925 20.5V38.4375H35.0209V20.5" stroke="#7B49EA" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
-<path d="M7.6875 13.0456V5.97913" stroke="#7B49EA" stroke-width="2" stroke-miterlimit="10"/>
+<path d="M23.9167 14.5209H17.0834V21.3542H23.9167V14.5209Z" stroke="#000000" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M1.70837 17.9375L20.5 2.5625L39.2917 17.9375" stroke="#000000" stroke-width="2" stroke-miterlimit="10"/>
+<path d="M16.2292 38.4375V28.1875H24.7709V38.4375" stroke="#000000" stroke-width="2" stroke-miterlimit="10"/>
+<path d="M5.97925 20.5V38.4375H35.0209V20.5" stroke="#000000" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M7.6875 13.0456V5.97913" stroke="#000000" stroke-width="2" stroke-miterlimit="10"/>
 </svg>

@@ -3,11 +3,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom"
 import './App.css'
 
-import { Sidebar } from "./components/sidebar"
 import Layout from "./pages/panel/layout"
 import Index from "./pages/panel/index"
 import Rooms from "./pages/panel/rooms"
@@ -20,6 +18,11 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
           <Route path="rooms" element={<Rooms />} />
+          <Route path="reservations" element={<Rooms />} />
+          <Route path="invoices" element={<Rooms />} />
+          <Route path="cameras" element={<Rooms />} />
+          <Route path="restaurant" element={<Rooms />} />
+          <Route path="notifications" element={<Rooms />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>

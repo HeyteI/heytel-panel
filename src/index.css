@@ -9,8 +9,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 .footer-texture {
   background-image: url('../public/Group_106.svg');
+}
+
+.bl {
+  color: rgb(156 163 175);
+}
+
+.active {
+  color: #000000 !important;
+}
+
+.active path, .active line, .active g {
+  stroke: #7B49EA !important;
 }
