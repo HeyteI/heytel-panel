@@ -13,14 +13,3 @@ Then you can run the panel with:
 ```bash
 npm start
 ```
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
-# TODO
-
-if updated invoices -> send notification
-
-On 401 expired token reload page and show notification about expired token
-
