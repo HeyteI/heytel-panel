@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body, html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,11 +13,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-}
 
-.footer-texture {
-  background-image: url('../public/Group_106.svg');
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .bl {
@@ -24,6 +26,20 @@ body {
   color: #000000 !important;
 }
 
-.active path, .active line, .active g {
+.active path,
+.active line,
+.active g {
   stroke: #7B49EA !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: "color 9999s ease-out, background-color 9999s ease-out";
+  transition-delay: 9999s;
+}
+
+select[multiple]:focus option:checked {
+  background: gray linear-gradient(0deg, rgb(173, 173, 173) 0%, rgb(173, 173, 173) 100%) !important;
 }

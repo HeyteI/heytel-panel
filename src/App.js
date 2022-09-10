@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,8 +10,16 @@ import Layout from "./pages/panel/layout"
 import Index from "./pages/panel/index"
 import Rooms from "./pages/panel/rooms"
 import Login from "./pages/panel/login"
+import AuthContext from "./context/AuthProvider";
+
 
 function App() {
+  const user = useContext(AuthContext);
+
+  if (Object.keys(user.auth).length === 0) {
+    return <Login></Login>
+  }
+
   return (
     <Router>
       <Routes>
@@ -23,8 +31,8 @@ function App() {
           <Route path="cameras" element={<Rooms />} />
           <Route path="restaurant" element={<Rooms />} />
           <Route path="notifications" element={<Rooms />} />
+          <Route path="settings" element={<Rooms />} />
         </Route>
-        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   )

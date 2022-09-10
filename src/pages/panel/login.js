@@ -1,13 +1,15 @@
-import { Logo } from '../.././components/logo';
-import { LoginContainer } from '../.././components/login';
-import { Circles } from '../.././components/circles';
+import { Logo } from '../.././components/login/logo';
+import { LoginContainer } from '../.././components/login/login';
+import { Circles } from '../.././components/login/circles';
+
+import React from "react"
 
 
-const Login = () => {
+const Login = (props) => {
     return (
         <div>
             <Logo />
-            <LoginContainer />
+            <LoginContainer/>
             <Circles />
         </div>
     )
