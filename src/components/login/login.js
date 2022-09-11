@@ -5,11 +5,13 @@ import { SocketsContext } from "../../context/AuthProvider";
 import axios from '../../api/axios';
 import { LoadingSpinner } from '../loading';
 import { io } from "socket.io-client";
+import { Alert } from "../alert"
+import { AlertsContainer } from "../alertscontainer"
 
 
 export function LoginContainer() {
     const { setAuth } = useContext(AuthContext);
-    const [ socket, setSocket ] = useContext(SocketsContext);
+    const [socket, setSocket] = useContext(SocketsContext);
     const userRef = useRef();
     const errRef = useRef();
 
@@ -80,50 +82,54 @@ export function LoginContainer() {
     }
 
     const login = (
-        <div className="flex items-center text-center justify-center">
-
-            <form className="px-8 pt-6 pb-8 mb-4 h-96 w-96" onSubmit={handleSubmit}>
-                <div className="box-border h-64 w-96 p-4 pt-30 border-2 rounded-md border-violet-700 w-full max-w-xs">
-                    <h1 className="font-bold text-xl pb-3">Logowanie do systemu</h1>
-                    <div className="w-full max-w-xs">
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-light mb-2" htmlFor="username">
-                                Login
-                            </label>
-                            <input
-                                className="shadow appearance-none border border-violet-700 rounded border-solid py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="username"
-                                type="text"
-                                placeholder="root"
-                                onChange={e => setUsername(e.target.value)}
-                                ref={userRef}
-                                autoComplete="off"
-                                required>
-                            </input>
-                        </div>
-                        <div className="mb-6">
-                            <label className="block text-gray-700 text-sm font-light mb-2" htmlFor="password">
-                                Hasło
-                            </label>
-                            <input
-                                className="shadow appearance-none border border-solid border-violet-700 rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                                id="password"
-                                type="password"
-                                placeholder="••••••••"
-                                onChange={e => setPassword(e.target.value)}
-                                required>
-                            </input>
-                            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                        </div>
-                        <div className="flex items-center justify-between">
+        <>
+            <div className="flex items-center text-center justify-center">
+                <form className="px-8 pt-6 pb-8 mb-4 h-96 w-96" onSubmit={handleSubmit}>
+                    <div className="box-border h-64 w-96 p-4 pt-30 border-2 rounded-md border-violet-700 w-full max-w-xs">
+                        <h1 className="font-bold text-xl pb-3">Logowanie do systemu</h1>
+                        <div className="w-full max-w-xs">
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-light mb-2" htmlFor="username">
+                                    Login
+                                </label>
+                                <input
+                                    className="shadow appearance-none border border-violet-700 rounded border-solid py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="username"
+                                    type="text"
+                                    placeholder="root"
+                                    onChange={e => setUsername(e.target.value)}
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    required>
+                                </input>
+                            </div>
+                            <div className="mb-6">
+                                <label className="block text-gray-700 text-sm font-light mb-2" htmlFor="password">
+                                    Hasło
+                                </label>
+                                <input
+                                    className="shadow appearance-none border border-solid border-violet-700 rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="password"
+                                    type="password"
+                                    placeholder="••••••••"
+                                    onChange={e => setPassword(e.target.value)}
+                                    required>
+                                </input>
+                                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                            </div>
+                            <div className="flex items-center justify-between">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button className="bg-violet-700 hover:bg-violet-900 text-white font-light py-2 w-5/12 px-4 rounded-xl focus:outline-none focus:shadow-outline mt-4" type="submit">
-                    Zaloguj
-                </button>
-            </form>
-        </div>
+                    <button className="bg-violet-700 hover:bg-violet-900 text-white font-light py-2 w-5/12 px-4 rounded-xl focus:outline-none focus:shadow-outline mt-4" type="submit">
+                        Zaloguj
+                    </button>
+                </form>
+            </div>
+            <div class="fixed bottom-0 right-0 mr-3">
+                {window.location.href.includes("?forbidden=true") ? <Alert type="alert" title="Info" message="Token wygasł. Zaloguj się ponownie." id="alert-forbidden" /> : <></>}
+            </div>
+        </>
     )
     return (
         <div className="app">
