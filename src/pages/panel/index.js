@@ -183,7 +183,7 @@ const Index = () => {
                 <div className="flex">
                     <Discountcard data={data} setData={setData}>
                         {data.master.discounts.map((discount, index) => {
-                            return <Discounts key={index} discount={discount.value} text={discount.name} />
+                            return <Discounts key={index} discount={discount.value} text={discount.name} loading={isLoading}/>
                         })}
                     </Discountcard>
                 </div>
