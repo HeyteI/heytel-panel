@@ -43,3 +43,13 @@ input:-webkit-autofill:active {
 select[multiple]:focus option:checked {
   background: gray linear-gradient(0deg, rgb(173, 173, 173) 0%, rgb(173, 173, 173) 100%) !important;
 }
+
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

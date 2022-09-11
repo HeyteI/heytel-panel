@@ -78,7 +78,7 @@ export function Discountcard(props) {
     return (
         <div className="discountcard">
             <div className="flex items-center">
-                <div className="box-border w-80 h-80 mt-5 ml-5 border border-[#D9D9D9] shadow-lg rounded-md overflow-hidden hover:overflow-y-scroll">
+                <div className="box-border w-80 h-80 mt-5 ml-5 border border-[#D9D9D9] shadow-lg rounded-md hide-scrollbar overflow-hidden hover:overflow-y-scroll">
                     <h1 className="ml-5 font-semibold py-3">Obowiązujące promocje {modal}</h1>
                     <div className="h-px w-full border border-[#D9D9D9]"></div>
                     {props.children}

@@ -16,16 +16,15 @@ const Rooms = () => {
     const [loading, setLoading] = useState(false);
 
     const getFloorsCount = async () => {
-        let r = await axios.get("/api/secured/room/floors", {
+        return await axios.get("/api/secured/room/floors", {
             withCredentials: true,
-            proxy: "http://localhost:8080",
+            proxy: "https://localhost:8080",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: user.auth.accessToken,
             },
-        });
-        return parseInt(r.data.data);
-    };
+        })
+    }
 
     const fetchFloor = async ({ floorNumber }) => {
         return axios.get(`/api/secured/room/floor/${floorNumber}`, {
@@ -42,8 +41,8 @@ const Rooms = () => {
         const fetchAllRooms = async () => {
             try {
                 setLoading(true);
+                const floorsCount = parseInt((await getFloorsCount()).data.data) // Fetch the floorsCount
 
-                const floorsCount = await getFloorsCount(); // Fetch the floorsCount
 
                 if (isNaN(floorsCount)) return; // Check if floorsCount is a number
 
@@ -55,7 +54,7 @@ const Rooms = () => {
                 setFloors(data);
                  // Promise.all returns an array of values, each item in the array I presume is an array of rooms per floor
             } catch (e) {
-                console.log("error: ", e); // Handle your errors here
+                console.error(e); // Handle your errors here
             } finally {
                 setLoading(false);
             }

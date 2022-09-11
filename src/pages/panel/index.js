@@ -12,6 +12,7 @@ import axios from "../../api/axios"
 import AuthContext from "../../context/AuthProvider"
 import { ShiftContext } from "../../context/AuthProvider"
 import { isToday } from "../../utils/date"
+import PreviousMap from "postcss/lib/previous-map"
 
 const Index = () => {
     const user = useContext(AuthContext);
@@ -59,6 +60,7 @@ const Index = () => {
     useEffect(() => {
         const fetchGeneral = async () => {
             try {
+                setLoading(false)
                 let allInvoices = (await fetchAllInvoices()).data.data
                 console.log(allInvoices)
 
@@ -70,7 +72,8 @@ const Index = () => {
                     let date_range = element.date_range.split("/")
                     const from = Date.parse(date_range[0])
                     const to = Date.parse(date_range[1])
-
+                    
+                    console.log((today <= to && today >= from))
                     if ((today <= to && today >= from)) peopleCount += element.people_count
 
                     if (isToday(new Date(from))) todaysCheckins += 1
@@ -81,6 +84,8 @@ const Index = () => {
                 return [{ people_count: peopleCount, todays_checkins: todaysCheckins }, allInvoices]
             } catch (e) {
                 console.error(e)
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -117,7 +122,6 @@ const Index = () => {
     useEffect(() => {
         if (Object.keys(shift[0]).length !== 0) {
             const calcShiftEnd = () => {
-
                 let now = new Date()
                 let work_time = new Date(shift[0].work_time)
                 let diff = work_time - now
@@ -141,8 +145,15 @@ const Index = () => {
 
     useEffect(() => {
         const fetchAllNotifications = async () => {
-            let notifications = (await fetchNotifications(user.auth.data.ID)).data.data
-            setData({ master: { general: data.master.general, discounts: data.master.discounts, closestcheckins: data.master.closestcheckins, notifications: notifications } })
+            try {
+                setLoading(true)
+                let notifications = (await fetchNotifications(user.auth.data.ID)).data.data
+                setData({ master: { general: data.master.general, discounts: data.master.discounts, closestcheckins: data.master.closestcheckins, notifications: notifications } })
+            } catch(e) {
+                console.error(e)
+            } finally {
+                setLoading(false)
+            }
         }
 
         const interval = setInterval(() => fetchAllNotifications(), 5000);  // every 5sec
@@ -153,12 +164,14 @@ const Index = () => {
     }, [data])
 
     return (
-        <div className="">
-            <div className="flex gap-2 w-full ml-32">
-                <Card icon="guests" color="guests" info={data.master.general.people_count} text="Liczba gości" loading={isLoading}></Card>
-                <Card icon="checkins" color="checkins" info={data.master.general.todays_checkins} text="Dzisiejsze zameldowania" loading={isLoading}></Card>
-                <Card icon="restaurant" color="restaurant" info="?" text="Liczba wolnych miejsc w restauracji" loading={isLoading}></Card>
-                <Card icon="clock" color="clock" info={shiftTime} text="Czas do końca zmiany" loading={isLoading}></Card>
+        <>
+            <div className="flex w-full">
+                <div className="flex ml-32 gap-2">
+                    <Card icon="guests" color="guests" info={data.master.general.people_count} text="Liczba gości" loading={isLoading}></Card>
+                    <Card icon="checkins" color="checkins" info={data.master.general.todays_checkins} text="Dzisiejsze zameldowania" loading={isLoading}></Card>
+                    <Card icon="restaurant" color="restaurant" info="?" text="Liczba wolnych miejsc w restauracji" loading={isLoading}></Card>
+                    <Card icon="clock" color="clock" info={shiftTime} text="Czas do końca zmiany" loading={isLoading}></Card>
+                </div>
             </div>
             <div className="flex gap-2 w-full">
                 <div className="flex">
@@ -173,18 +186,20 @@ const Index = () => {
                 </div>
             </div>
             <div className="flex gap-2 w-full">
-                <Closestcheckinscard>
-                    {data.master.closestcheckins.map((checkin, index) => {
-                        return <Closestcheckins key={index} checkin={checkin} />
-                    })}
-                </Closestcheckinscard>
-                <Notificationscard>
-                    {data.master.notifications.map((notification, index) => {
-                        return <Notifications key={index} text={notification.message} type={notification.type} />
-                    })}
-                </Notificationscard>
+                <div className="flex">
+                        <Closestcheckinscard>
+                            {data.master.closestcheckins.map((checkin, index) => {
+                                return <Closestcheckins key={index} checkin={checkin} />
+                            })}
+                        </Closestcheckinscard>
+                        <Notificationscard>
+                            {data.master.notifications.map((notification, index) => {
+                                return <Notifications key={index} text={notification.message} type={notification.type} />
+                            })}
+                        </Notificationscard>
+                    </div>
             </div>
-        </div>
+        </>
     )
 };
 

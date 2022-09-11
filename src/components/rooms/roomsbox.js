@@ -90,7 +90,7 @@ export function RoomsBox(props) {
     }
     return (
         <div>
-            <div className="box-border h-64 w-[75vw] pt-30 border-2 rounded-md mt-9 mx-12 text-left overflow-x-scroll">
+            <div className="box-border h-64 w-[75vw] pt-30 border-2 rounded-md mt-9 mx-12 text-left overflow-x-scroll overflow-y-hidden">
                 <div>
                     <span className="text-lg my-2 ml-2">{props.title}{modal}</span>
                     <div className="h-px w-full border border-1 border-[#D9D9D9]"></div>
