@@ -115,6 +115,7 @@ export function Chart(props) {
             }
         }
         getAllData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

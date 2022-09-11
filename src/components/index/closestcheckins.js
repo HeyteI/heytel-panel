@@ -71,6 +71,7 @@ export function Closestcheckins(props) {
             }
         }
         fetchGeneral()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.checkin])
 
     return (
