@@ -67,7 +67,7 @@ export function Card(props) {
                                     </div>
                                 </div>
                                 <div className="flex">
-                                    <div className="flex flex-col mt-10 ml-3">
+                                    <div className="flex flex-col mt-10 ml-5">
                                         <p className="text-2xl leading-6 font-medium">{props.info}</p>
                                         <p className="text-lg leading-4 font-thin text-gray-500 mt-1">{props.text}</p>
                                     </div>

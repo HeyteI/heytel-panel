@@ -56,7 +56,7 @@ export function CreateShiftModal(props) {
                             </h3>
                         </div>
                         <div className="p-6 space-y-6">
-                            <FormRow handleChange={onChange} title="Oczekiwany czas pracy" name="work_time" type="hour" value={data?.title || ""} placeholder="8" />
+                            <FormRow handleChange={onChange} title="Oczekiwany czas pracy" name="work_time" type="hour" min="1" value={data?.title || ""} placeholder="8" />
                             <FormRow handleChange={onChange} title="Dodatkowe informacje" name="start_description" type="text" value={data?.description || "Brak"}/>
                         </div>
                         <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200">

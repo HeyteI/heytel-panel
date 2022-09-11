@@ -126,10 +126,13 @@ const Index = () => {
                 let work_time = new Date(shift[0].work_time)
                 let diff = work_time - now
 
+                let hours = Math.floor(diff / 1000 / 60 / 60)
+                let minutes = Math.floor(diff / 1000 / 60 % 60)
+
                 if (diff > 0) {   
-                    setShiftTime(`${Math.floor(diff / 1000 / 60 / 60)}h ${Math.floor(diff / 1000 / 60 % 60)} min`)
+                    setShiftTime(`${hours} h ${minutes} min`)
                 } else {
-                    setShiftTime("Zmiana skończyła się")
+                    setShiftTime(`Zmiana skończyła się ${Math.abs(hours)}h ${Math.abs(minutes)}min temu`)
                 }
             }
 
