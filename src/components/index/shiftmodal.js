@@ -26,7 +26,7 @@ export function CreateShiftModal(props) {
         event.preventDefault()
 
         let today = new Date()
-        let work_time = addHours(8)
+        let work_time = addHours(data.work_time)
 
 
         let shiftData = { ...data, work_time: work_time, user_id: user.auth.data.ID, shift_start: today}
@@ -42,7 +42,6 @@ export function CreateShiftModal(props) {
     const onChange = (event) => {
         let name = event.target.name
         let value = event.target.value
-
         setData({ ...data, [name]: value })
     }
 

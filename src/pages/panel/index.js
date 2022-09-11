@@ -133,7 +133,7 @@ const Index = () => {
                 }
             }
 
-            const interval = setInterval(() => calcShiftEnd(), 20000);  // every 20sec
+            const interval = setInterval(() => calcShiftEnd(), 1000);  // every 20sec
             return () => {
                 clearInterval(interval);
             }
@@ -156,7 +156,7 @@ const Index = () => {
             }
         }
 
-        const interval = setInterval(() => fetchAllNotifications(), 5000);  // every 5sec
+        const interval = setInterval(() => fetchAllNotifications(), 50000);  // every 50sec
         return () => {
             clearInterval(interval);
         }
