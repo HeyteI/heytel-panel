@@ -15,14 +15,38 @@ const types = {
     </svg>,
 }
 
-export function Notifications(props) {
+function SkeletonLoadingNotification() {
     return (
         <div className="notifications">
-            <div className="flex">
-                <h1 className="flex mt-2 ml-2">{types[props.type]}</h1>
-                <h1 className="ml-2 py-3 font-thin flex">{props.text}</h1>
+            <div className="flex flex-row items-center ml-3 my-1.5 animate-pulse">
+                <div className="float-left">
+                    <div className="flex items-center">
+                        <div className="flex relative h-9 w-9 bg-white">
+                            <div className="absolute flex items-center justify-center h-9 w-9 bg-slate-200 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                <h1 className="ml-5 text-center font-thin py-3">
+                    <div className="h-2.5 w-[56rem] bg-slate-200 rounded"></div>
+                </h1>
             </div>
             <div className="h-px w-full border border-[#D9D9D9]"></div>
         </div>
+    )
+}
+
+export function Notifications(props) {
+    return (
+        <>
+            {props.loading ? <SkeletonLoadingNotification />
+                : <div className="notifications">
+                    <div className="flex">
+                        <h1 className="flex mt-2 ml-2">{types[props.type]}</h1>
+                        <h1 className="ml-2 py-3 font-thin flex">{props.text}</h1>
+                    </div>
+                    <div className="h-px w-full border border-[#D9D9D9]"></div>
+                </div>
+            }
+        </>
     )
 }

@@ -194,7 +194,7 @@ const Index = () => {
                         </Closestcheckinscard>
                         <Notificationscard>
                             {data.master.notifications.map((notification, index) => {
-                                return <Notifications key={index} text={notification.message} type={notification.type} />
+                                return <Notifications key={index} text={notification.message} type={notification.type} loading={isLoading} />
                             })}
                         </Notificationscard>
                     </div>
